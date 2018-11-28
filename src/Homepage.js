@@ -54,15 +54,15 @@ render() {
     </header>
 
    <body className="Homepage-body">
-
+   <div className= "firstnamediv">
    <input id="firstnameinput" type="text" onKeyPress={this.handlekeypress}
-   	placeholder="First Name.."
-         /> <br/> <br/>
+   	placeholder="First Name.."/>
+    </div>
 
 
+<div className= "lastnamediv">
    <input id="secondnameinput" type="text"
- 	placeholder="Last Name..."
-   /> <br/> <br/>
+ 	placeholder="Last Name..."/></div> <br/> <br/>
    <button className="btn" onClick={this.submit}>Sign In</button>
 
 </body>
