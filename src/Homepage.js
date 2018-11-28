@@ -26,7 +26,7 @@ class Homepage extends Component {
 
 
 
-       axios.post(ConstClass.ENDPOINT_ACCAPI+ConstClass.ACCOUNT_TYPE,
+       axios.post(ConstClass.ENDPOINT_ACCAPI+ConstClass.CREATE,
          {
            "firstName":document.getElementById('firstnameinput').value,
            "lastName":document.getElementById('secondnameinput').value,
@@ -37,7 +37,7 @@ class Homepage extends Component {
 
 
          this.setState({accountNumber:Response.data.accountNumber})
-         this.props.history.push("/user/"+"1");
+         this.props.history.push("/user/"+this.state.accountNumber);
   });
 }
 

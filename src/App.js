@@ -31,7 +31,7 @@ function RouterCode() {
             <hr />
             <Route exact path="/" component={Homepage} />
             <Route path="/user/:accountNumber" component={UserPage}/>
-            <Route path="/user/:accountNumber/prize" component={PrizePage}/>
+            <Route path="/prize/:accountNumber" component={PrizePage}/>
         </div>
     </Router>
 );

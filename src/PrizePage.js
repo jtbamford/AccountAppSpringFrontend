@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
 
+import * as ConstClass from './const.js';
+
+
 
 
 class PrizePage extends Component {
@@ -19,8 +22,8 @@ class PrizePage extends Component {
   }
 
 
-  ComponentWIllMount = () => {
-  axios.get(this.state.IP + this.state.port + this.props.match.params.accountNumber).then(response => {
+  componentDidMount = () => {
+  axios.get(ConstClass.ENDPOINT_ACCAPI + ConstClass.PRIZE_PATH + this.props.match.params.accountNumber).then(response => {
   this.setState({
   prizeOutcome: response.data
   })
@@ -28,11 +31,10 @@ class PrizePage extends Component {
   }
 
   render() {
-  const prizeOutcome = this.state.prizeOutcome;
   return (
 
   <div id="prizeDiv">
-  <p> {prizeOutcome}</p>
+  <p> {this.state.prizeOutcome}</p>
   <button onClick={this.goBack} >Back</button>
   </div>
 

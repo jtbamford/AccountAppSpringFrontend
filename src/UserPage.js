@@ -1,44 +1,33 @@
 import React, { Component } from 'react';
-
 import axios from 'axios';
 import ReactDOM from 'react-dom';
-
-
+import * as ConstClass from './const.js';
 
 class UserPage extends Component {
-
-
   constructor(props){
   super(props);
   this.state = {
-    account: ""
+    account: []
   }
   }
 
-  getAccountNumber=()=>{
-    axios.get('this.state.IP + this.state.port + this.propse.match.params.accountNumber')
+  componentDidMount=()=>{
+    axios.get(ConstClass.ENDPOINT_ACCAPI + ConstClass.PRIZE_PATH + this.props.match.params.accountNumber)
     .then(Response=> {
       this.setState({account:Response.data})
     })
 
   }
-
   enterDraw = () =>{
-      console.log("this works")
-      // CHANGE ROUTER PAGE BEING RENDERED
+    this.props.history.push("/prize/"+ this.props.match.params.accountNumber)
   }
-
-
   render() {
-
-      const account = this.state.account;
 
     return (
      <div className = "Userpage">
       <header className="Userpage-header">
-      {this.getAccountNumber()}
-      <p>Account Successfully Created: {account.accountNumber}</p>
-      {account.firstName}'s Account
+
+      <p>Account Successfully Created: {this.props.match.params.accountNumber}</p>
       </header>
       <body className="Userpage-body">
       <p>Click Here To Enter Prize Draw</p>
