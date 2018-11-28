@@ -18,9 +18,7 @@ class Homepage extends Component {
   constructor(){
   super();
   this.state = {
-    user: "",
     accountNumber: "",
-    message: "",
 	IP:"http://localhost:",
 	port:"8081"
   }
@@ -28,28 +26,17 @@ class Homepage extends Component {
 
 
   submit = () => {
-     var username;
 
-     username=document.getElementById('makeuser').value;
-     if(username!=null) {
-    // console.log(username);
-     // change url to that of add user method
-    axios.post(this.state.IP+this.state.port+'/TheBookClubJava/api/Library/createUser', {
-       username: username
-     }).then(Response =>{
-       this.setState({message:Response.data.message})
-       if(this.state.message==="user has been successfully added") {
-       axios.get(this.state.IP+this.state.port+'/TheBookClubJava/api/Library/getUserByUsername/'+username).then(Response=> {
 
-         this.setState({accountNumber:Response.data.accountNumber})
+
+       axios.post(this.state.IP+this.state.port+/*constant*/+/*Constant*/.).then(Response=> {
+
+         this.setState({accountNumber:Response.data})
          this.props.history.push("/user/"+this.state.accountNumber);
-       }
-       )
-     }
-     }
-     )
-   }
+
   }
+
+
 
 
 
@@ -62,6 +49,18 @@ render() {
     </header>
 
    <body className="Homepage-body">
+
+   <form onSubmit={this.submit}>
+        <label>
+          First Name:
+          <input type="text" value={this.state.value}/>
+        </label>
+        <label>
+          Second Name:
+          <input type="text" value={this.state.value}/>
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
 
 </body>
 </div>
