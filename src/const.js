@@ -1,5 +1,7 @@
-const IP_ADDRESS = "http://localhost:";
-const PORT_ACCAPI = "8081";
+export const IP_ADDRESS = "http://localhost:";
+export const PORT_ACCAPI = "8081";
+export const ACCOUNT_TYPE   = "1";
+
 export const ENDPOINT_ACCAPI = IP_ADDRESS+PORT_ACCAPI+"/account";
 
 export const HOME_PATH = "/";

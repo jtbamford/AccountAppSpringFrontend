@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import './App.css';
 import Homepage from './Homepage';
-import UserInfo from './UserInfo';
+import UserPage from './UserPage';
+import PrizePage from './PrizePage';
 import {
     BrowserRouter as Router,
     Route,
     Link
 } from 'react-router-dom'
+
 
 
 class App extends Component {
@@ -28,7 +30,7 @@ function RouterCode() {
 
             <hr />
             <Route exact path="/" component={Homepage} />
-            <Route path="/user/:accountNumber" component={AccountPage}/>
+            <Route path="/user/:accountNumber" component={UserPage}/>
             <Route path="/user/:accountNumber/prize" component={PrizePage}/>
         </div>
     </Router>

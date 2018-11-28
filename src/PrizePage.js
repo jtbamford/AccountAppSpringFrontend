@@ -1,45 +1,43 @@
 import React, { Component } from 'react';
-import './Userpage.css';
+
 import axios from 'axios';
-import Popup from 'reactjs-popup';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import ReactDOM from 'react-dom';
 
 
 
 class PrizePage extends Component {
+  constructor(props){
+  super(props);
+  this.state = {
+  accountNumber: "",
+  prizeOutcome: ""
+  }
+  }
 
-constructor(props){
-super(props);
-this.state = {
-  info: "",
-  userID: "",
-  username: "",
-	IP:"http://localhost:",
-	port:"8081"
-}
-}
+  goBack=()=> {
+    this.props.history.push("/");
+  }
 
 
-goBack=()=> {
-  this.props.history.push("/");
-}
+  ComponentWIllMount = () => {
+  axios.get(this.state.IP + this.state.port + this.props.match.params.accountNumber).then(response => {
+  this.setState({
+  prizeOutcome: response.data
+  })
+  })
+  }
 
-render() {
+  render() {
+  const prizeOutcome = this.state.prizeOutcome;
   return (
-   <div className = "Userpage">
-    <header className="Userpage-header">
-    {this.getuser()}
-    </header>
 
-    <body className="Userpage-body">
+  <div id="prizeDiv">
+  <p> {prizeOutcome}</p>
+  <button onClick={this.goBack} >Back</button>
+  </div>
 
-
-</body>
-</div>
-
-);
-}
-}
+  )
+  }
+  }
 
 export default PrizePage

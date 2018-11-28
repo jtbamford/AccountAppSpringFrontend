@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import './Homepage.css';
 import axios from 'axios';
-import UserInfo from './UserInfo';
-import Popup from 'reactjs-popup';
+import UserPage from './UserPage';
 import {
     BrowserRouter as Router,
     Route,
@@ -10,6 +8,7 @@ import {
     Redirect
 } from 'react-router-dom'
 import { withRouter } from 'react-router-dom';
+import * as ConstClass from './const.js';
 
 
 
@@ -19,8 +18,6 @@ class Homepage extends Component {
   super();
   this.state = {
     accountNumber: "",
-	IP:"http://localhost:",
-	port:"8081"
   }
   }
 
@@ -29,12 +26,20 @@ class Homepage extends Component {
 
 
 
-       axios.post(this.state.IP+this.state.port+/*constant*/+/*Constant*/.).then(Response=> {
+       axios.post(ConstClass.ENDPOINT_ACCAPI+ConstClass.ACCOUNT_TYPE,
+         {
+           "firstName":document.getElementById('firstnameinput').value,
+           "lastName":document.getElementById('secondnameinput').value,
+           "accountType":ConstClass.ACCOUNT_TYPE
+         }
+       ).then(Response=> {
 
-         this.setState({accountNumber:Response.data})
-         this.props.history.push("/user/"+this.state.accountNumber);
 
-  }
+
+         this.setState({accountNumber:Response.data.accountNumber})
+         this.props.history.push("/user/"+"1");
+  });
+}
 
 
 
@@ -50,17 +55,15 @@ render() {
 
    <body className="Homepage-body">
 
-   <form onSubmit={this.submit}>
-        <label>
-          First Name:
-          <input type="text" value={this.state.value}/>
-        </label>
-        <label>
-          Second Name:
-          <input type="text" value={this.state.value}/>
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+   <input id="firstnameinput" type="text" onKeyPress={this.handlekeypress}
+   	placeholder="First Name.."
+         /> <br/> <br/>
+
+
+   <input id="secondnameinput" type="text"
+ 	placeholder="Last Name..."
+   /> <br/> <br/>
+   <button className="btn" onClick={this.submit}>Sign In</button>
 
 </body>
 </div>
