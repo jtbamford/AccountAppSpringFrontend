@@ -1,5 +1,5 @@
-export const IP_ADDRESS = "http://localhost:";
-export const PORT_ACCAPI = "8081";
+export const IP_ADDRESS = "http://35.230.148.126:";
+export const PORT_ACCAPI = "8080";
 export const CREATE   = "/create";
 export const ACCOUNT_TYPE = "1";
 
