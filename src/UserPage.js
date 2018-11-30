@@ -14,6 +14,7 @@ class UserPage extends Component {
   componentDidMount=()=>{
     axios.get(ConstClass.ENDPOINT_ACCAPI + ConstClass.PRIZE_PATH + this.props.match.params.accountNumber)
     .then(Response=> {
+      console.log(this.props.match.params.accountNumber);
       this.setState({account:Response.data})
     })
 
